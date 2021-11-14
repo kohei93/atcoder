@@ -1,0 +1,54 @@
+
+/*
+int -> string: to_string( )
+string -> int: (int)(c-'0')
+ベクター: vector<int> v; 
+    v.push_back(5);              // 末尾に値5を追加
+    v.insert(v.begin() + 1, 2);  // 1番目に値2を挿入
+    v.begin();
+    v.end();
+    v.erase(v.begin() + 2);    // 2番目の単一要素を削除
+
+順列
+do {
+
+ } while (std::next_permutation(v.begin(), v.end()));
+
+*/
+
+#include <iostream>
+#include <cmath>
+#include<bitset>
+#include<vector>
+#include<algorithm>
+#include <string>
+using namespace std;
+typedef long long ll;
+
+
+
+int main(){
+    string X;
+    cin>>X;
+    int judge=0;
+    int count=0;
+    for(int i=1;i<4;i++){
+        if(X[0]==X[i]){
+            count++;
+        }
+    }
+    if(count==3)judge=1;
+
+
+    count=0;
+    for(int i=1;i<4;i++){
+        if(X[i-1]+1==X[i] || (X[i-1]=='9' && X[i]=='0') ){
+            count++;
+        }
+    }
+    if(count==3)judge=1;
+
+    if(judge==1)cout<<"Weak"<<endl;
+    else cout<<"Strong"<<endl;
+    return 0;
+}
