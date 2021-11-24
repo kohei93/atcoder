@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+#include<bitset>
+#include<vector>
+#include<algorithm>
+#include <string>
+
+
+using namespace std;
+typedef long long ll;
+#define INF 1010000000
+#define N20 1048576
+
+int main(){
+    ll N;
+    cin>>N;
+    ll ruijo=1;
+    int count=0;
+    while(1){
+        if(ruijo>N){
+            ruijo=ruijo/2;
+            count--;
+            // cout<<count<<" "<<ruijo<<endl;
+            break;
+        }
+        count++;
+        ruijo*=2;
+    }
+    cout<<count<<endl;
+
+}
