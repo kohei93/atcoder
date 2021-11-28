@@ -1,0 +1,95 @@
+#include <iostream>
+#include <cmath>
+#include<bitset>
+#include<vector>
+#include<algorithm>
+#include <string>
+
+
+using namespace std;
+typedef long long ll;
+#define INF 1010000000
+#define N20 1048576
+
+
+void swap1(ll *a, ll *b) {
+    ll tmp;
+    tmp = *b;
+    *b = *a;
+    *a = tmp;
+}
+
+
+void QuickSort(ll a[],ll b[], ll left, ll right) {
+    ll pivot;
+    ll i, j;
+    if(left >= right) {
+        return;
+    }
+    pivot = a[left];
+    i = left;
+    j = right;
+    while(1) {
+        while (a[i] < pivot) {
+            i++;
+        }
+        while (a[j] > pivot) {
+            j--;
+        }
+        if (i >= j) {
+            break;
+        }
+        swap1(&(a[i]), &(a[j]));
+        swap1(&(b[i]), &(b[j]));
+        i++;
+        j--;
+
+    }
+    QuickSort(a,b, left, i - 1);
+    QuickSort(a,b, j + 1, right);
+
+}
+
+
+int main(){
+
+    ll n,w;
+    cin>>n>>w;
+    ll a[n],b[n];
+    for(int i=0;i<n;i++)cin>>a[i]>>b[i];
+
+ 
+    
+    QuickSort(a,b,0,n-1);
+
+    // for(int i=0;i<n;i++)cout<<a[i]<<" "<<b[i]<<endl;
+
+    ll weight=0;
+    ll oisisa=0;
+    for(int j=0;j<n;j++){
+        ll sa=w-weight;
+        ll saidai=a[n-1-j];
+        ll i_saidai=n-1-j;
+
+        // cout<<"s "<<saidai<<" "<<i_saidai<<endl;
+        if(sa>b[i_saidai]){
+            oisisa+=saidai*b[i_saidai];
+            weight+=b[i_saidai];
+
+            a[i_saidai]=0;
+            b[i_saidai]=0;
+
+            // cout<<"o "<<oisisa<<" "<<weight<<endl;
+        }else{
+            oisisa+=saidai*sa;
+            weight+=sa;
+            break;
+        }
+
+    }
+    cout<<oisisa<<endl;
+
+
+    return 0;
+}
+
