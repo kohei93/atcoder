@@ -1,0 +1,72 @@
+/*
+int -> string: to_string( )
+string -> int: (int)(c-'0')
+ベクター: vector<int> v; 
+    v.push_back(5);              // 末尾に値5を追加
+    v.insert(v.begin() + 1, 2);  // 1番目に値2を挿入
+    v.begin();
+    v.end();
+    v.erase(v.begin() + 2);    // 2番目の単一要素を削除
+
+順列
+do {
+
+ } while (std::next_permutation(v.begin(), v.end()));
+
+*/
+
+#include <iostream>
+#include <cmath>
+#include<bitset>
+#include<vector>
+#include<algorithm>
+#include <string>
+
+
+using namespace std;
+typedef long long ll;
+#define INF 1010000000
+#define N20 1048576
+
+#define K 701
+
+
+int main(){
+
+  string s,t;
+
+  cin>>s>>t;
+  int flag=0;
+
+
+  ll length=s.length();
+  if(s==t)flag=1;
+  string scopy=s;
+  for(int k=1;k<27;k++){
+    
+
+    for(int i=0;i<length;i++){
+      if(scopy[i]=='z')scopy[i]='a';
+      else scopy[i]=scopy[i]+1;
+    }
+    // cout<<scopy<<endl;
+
+
+    if(scopy==t)flag=1;
+
+  }
+
+
+
+
+  if(flag==1){
+    cout<<"Yes"<<endl;
+  }else{
+    cout<<"No"<<endl;
+  }
+
+  return 0;
+}
+
+
+
